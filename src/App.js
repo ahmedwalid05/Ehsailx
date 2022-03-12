@@ -1,24 +1,30 @@
-import React, { useEffect } from "react";
-import "./App.css";
-import { getNASAPictures } from "./NasaAPI";
+import React from 'react';
+import './App.css';
+import ThemeProvider from './components/ThemeProvider/ThemeProvider';
+import HomeScreen from './screens/HomeScreen/HomeScreen';
+
+const theme = {
+  colors: {
+    background: {
+      primary: '#eff3f8',
+    },
+    text: {
+      primary: '#212121',
+      secondary: '#848484',
+    },
+  },
+};
 
 function App() {
-  const [pictures, updatePictures] = React.useState(null);
-
-  useEffect(() => {
-    if (!pictures) {
-      const startDate = new Date("2020-07-01T08:28:41.917Z");
-      const endDate = new Date();
-      getNASAPictures(startDate, endDate).then((res) => {
-        updatePictures(res);
-      });
-    }
-  }, [pictures]);
-
   return (
-    <div className="App">
-      {pictures && pictures.map((picture) => <div key={picture.date}>{picture.title}</div>)}
-    </div>
+    <ThemeProvider theme={theme}>
+      <div
+        className="App"
+        style={{ backgroundColor: theme.colors.background.primary }}
+      >
+        <HomeScreen />
+      </div>
+    </ThemeProvider>
   );
 }
 

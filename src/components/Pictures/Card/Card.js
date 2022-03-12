@@ -16,11 +16,21 @@ const styles = {
     boxShadow: '0px 2px 8px 4px rgba(0,0,0,0.2)',
     borderRadius: 5,
   },
+  imageContainer: {
+    maxHeight: '80%',
+    minHeight: '80%',
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    position: 'relative',
+  },
   image: {
-    objectFit: 'contain',
-    height: '80%',
+    minHeight: '90%',
+    width: '100%',
+    objectFit: 'cover',
   },
   metaContainer: {
+    zIndex: 1,
     flexGrow: 1,
     display: 'flex',
     flexWrap: 'wrap',
@@ -43,6 +53,7 @@ const styles = {
     fontSize: '14px',
   },
   date: {
+    zIndex: 1,
     background: '#735dd0',
     color: 'white',
     position: 'absolute',
@@ -60,7 +71,9 @@ const Card = ({ picture }) => {
   return (
     <div style={styles.cardContainer}>
       <div style={styles.date}>{picture.date}</div>
-      <img style={styles.image} alt={picture.explanation} src={picture.url} />
+      <div style={styles.imageContainer}>
+        <img style={styles.image} alt={picture.explanation} src={picture.url} />
+      </div>
       <div style={styles.metaContainer}>
         <h4 style={{ ...styles.title, color: theme.colors.text.primary }}>
           {picture.title}

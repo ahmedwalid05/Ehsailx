@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { getDaysAgo } from '../../utils';
 import { getNasaPictures } from './NasaAPI';
 
